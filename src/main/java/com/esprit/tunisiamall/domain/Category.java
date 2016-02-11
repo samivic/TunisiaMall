@@ -8,6 +8,7 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Category
  *
  */
+
 		//test
 
 @Entity
