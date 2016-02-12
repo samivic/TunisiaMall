@@ -3,6 +3,7 @@ package com.esprit.tunisiamall.service.interfaces;
 import java.util.List;
 
 import javax.ejb.Local;
+import javax.ejb.Remote;
 
 import com.esprit.tunisiamall.domain.Item;
 

@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import com.esprit.tunisiamall.domain.Item;
 import com.esprit.tunisiamall.service.interfaces.ItemService;
 
-@Stateless(name="Item")
+@Stateless(name="ItemClasse")
 public class ItemImpl implements ItemService {
 
 	public ItemImpl() {
@@ -60,8 +60,11 @@ public class ItemImpl implements ItemService {
 
 	@Override
 	public Item findItemById(Integer id) {
-
-		return em.find(Item.class, id);
+Item item=null;
+		try {
+			item=em.find(Item.class, id);
+		} catch (Exception e) {
+		} return item;
 	}
 
 
