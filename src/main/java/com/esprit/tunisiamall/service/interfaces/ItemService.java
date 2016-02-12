@@ -9,7 +9,10 @@ import com.esprit.tunisiamall.domain.Item;
 @Local
 public interface ItemService {
 
-	List<Item> findByAllItem();
 	Item findItemById(Integer id);
+	Boolean addItem(Item item);
+	Boolean removeItem(Item item);
+	Boolean updateItem(Item item);
+	List<Item> findAllItem();
 	
 }

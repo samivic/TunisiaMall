@@ -2,9 +2,6 @@ package com.esprit.tunisiamall.domain;
 
 import java.io.Serializable;
 import java.lang.String;
-import java.sql.Blob;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -21,8 +18,7 @@ public class Product implements Serializable {
 	private String name;
 	private int quantity;
 	private String description;
-	private Blob picture;
-	private float currentPrice;
+	private float intialPrice;
 	
 	
 	
@@ -62,20 +58,6 @@ public class Product implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Blob getPicture() {
-		return picture;
-	}
-	public void setPicture(Blob picture) {
-		this.picture = picture;
-	}
-	public float getCurrentPrice() {
-		return currentPrice;
-	}
-	public void setCurrentPrice(float currentPrice) {
-		this.currentPrice = currentPrice;
-	}
-	
-
 	@ManyToOne
 	@JoinColumn(name="FK_Shop")
 	public Shop getShop() {
@@ -83,6 +65,12 @@ public class Product implements Serializable {
 	}
 	public void setShop(Shop shop) {
 		this.shop = shop;
+	}
+	public float getIntialPrice() {
+		return intialPrice;
+	}
+	public void setIntialPrice(float intialPrice) {
+		this.intialPrice = intialPrice;
 	}
 
 
