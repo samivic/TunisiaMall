@@ -4,30 +4,60 @@
   <artifactId>TunisiaMall</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>ejb</packaging>
-  <build>
-<plugins>
-<plugin>
-<artifactId>maven-ejb-plugin</artifactId>
-<configuration>
-<ejbVersion>3.2</ejbVersion>
-</configuration>
 
-</plugin>
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
 
-</plugins>
-</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
+	</dependencies>
 
-<properties>
-<maven.compiler.target>1.8</maven.compiler.target>
-<maven.compiler.source>1.8</maven.compiler.source>
-</properties>
-<dependencies>
-<dependency>
-<groupId>javax</groupId>
-<artifactId>javaee-api</artifactId>
-<version>7.0</version>
-<scope>provided</scope>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<ejbVersion>3.2</ejbVersion>
+					<jarName>${project.artifactId}</jarName>
+				</configuration>
+			</plugin>
 
-</dependency>
-</dependencies>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+				<configuration>
+					<filename>${project.artifactId}.jar</filename>
+					<hostname>localhost</hostname>
+					<username>root</username>
+					<password></password>
+					<port>9000</port>
+				</configuration>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>undeploy</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
